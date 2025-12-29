@@ -1,38 +1,24 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Take Selfie</title>
+    <meta charset="UTF-8">
+    <title>Video Recorder Website</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body style="text-align:center; font-family:Arial">
+<body>
 
-  <h2>Scan QR & Take Selfie</h2>
+    <h2>Video Recording Website</h2>
 
-  <video id="video" width="300" autoplay></video>
-  <br><br>
+    <video id="video" autoplay muted></video>
 
-  <button onclick="takePhoto()">Take Selfie</button>
-  <br><br>
+    <div class="buttons">
+        <button id="start">Start Recording</button>
+        <button id="stop">Stop Recording</button>
+    </div>
 
-  <canvas id="canvas" width="300" height="300"></canvas>
+    <a id="downloadLink"></a>
 
-  <script>
-    navigator.mediaDevices.getUserMedia({
-      video: { facingMode: "user" }
-    })
-    .then(stream => {
-      document.getElementById("video").srcObject = stream;
-    })
-    .catch(err => {
-      alert("Camera permission required!");
-    });
-
-    function takePhoto() {
-      const canvas = document.getElementById("canvas");
-      const video = document.getElementById("video");
-      const ctx = canvas.getContext("2d");
-      ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-    }
-  </script>
-
+    <script src="script.js"></script>
 </body>
 </html>
+
